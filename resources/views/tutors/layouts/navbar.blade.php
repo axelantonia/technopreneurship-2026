@@ -1,93 +1,70 @@
-<nav class="bg-white border-b border-secondary sticky top-0 z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-18 py-3">
+@php
+    $route = request()->route()?->getName() ?? '';
+    $nav = [
+        ['name'=>'tutor.dashboard', 'icon'=>'bi-grid-1x2-fill',    'label'=>'Dashboard'],
+        ['name'=>'tutor.packages',  'icon'=>'bi-box-seam-fill',    'label'=>'Paket Kursus'],
+        ['name'=>'tutor.schedule',  'icon'=>'bi-calendar-week',    'label'=>'Jadwal Mengajar'],
+        ['name'=>'tutor.financial', 'icon'=>'bi-wallet2',          'label'=>'Keuangan & Saldo'],
+        ['name'=>'tutor.chat',      'icon'=>'bi-chat-text-fill',   'label'=>'Ruang Chat'],
+    ];
+@endphp
 
-            {{-- Logo --}}
-            <a href="/tutors/dashboard" class="flex items-center gap-2 flex-shrink-0">
-                <img src="/assets/logo/tutorium-logo.png" alt="Tutorium" class="h-10 w-auto">
-            </a>
+{{-- ── Brand ──────────────────────────────────────────────────────────── --}}
+<div class="flex items-center gap-2.5 px-5 h-14 border-b border-sidebar-border shrink-0">
+    <div class="w-7 h-7 rounded bg-accent flex items-center justify-center shrink-0">
+        <span class="text-white font-extrabold text-xs">T</span>
+    </div>
+    <span class="font-bold text-white text-sm tracking-wide">Tutorium</span>
+    <button class="ml-auto lg:hidden text-slate-500 hover:text-white p-1 transition" onclick="closeDrawer()">
+        <i class="bi bi-x-lg"></i>
+    </button>
+</div>
 
-            {{-- Desktop nav --}}
-            @php
-                $page = request()->query('page', 'dashboard');
-            @endphp
-            <div class="hidden md:flex items-center space-x-1">
-                <a href="/tutors/dashboard"
-                   class="px-4 py-2 rounded-xl text-sm font-semibold transition-colors
-                          {{ $page === 'dashboard' ? 'bg-surface text-primary border border-secondary' : 'text-gray-500 hover:text-dark hover:bg-gray-50' }}">
-                    <i class="bi bi-grid mr-1.5"></i>Dashboard
-                </a>
-                <a href="/tutors/dashboard?page=packages"
-                   class="px-4 py-2 rounded-xl text-sm font-semibold transition-colors
-                          {{ $page === 'packages' ? 'bg-surface text-primary border border-secondary' : 'text-gray-500 hover:text-dark hover:bg-gray-50' }}">
-                    <i class="bi bi-box-seam mr-1.5"></i>Paket Kursus
-                </a>
-                <a href="/tutors/dashboard?page=reviews"
-                   class="px-4 py-2 rounded-xl text-sm font-semibold transition-colors
-                          {{ $page === 'reviews' ? 'bg-surface text-primary border border-secondary' : 'text-gray-500 hover:text-dark hover:bg-gray-50' }}">
-                    <i class="bi bi-star mr-1.5"></i>Ulasan Murid
-                </a>
+{{-- ── Profil Tutor ────────────────────────────────────────────────────── --}}
+<div class="px-4 py-5 border-b border-sidebar-border shrink-0">
+    <div class="flex items-center gap-3">
+        <div class="relative shrink-0">
+            <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=1d2540&color=60a5fa&size=72"
+                 class="w-10 h-10 rounded-md object-cover ring-2 ring-sidebar-border" alt="Tutor">
+            <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald rounded-full border-2 border-sidebar"></span>
+        </div>
+        <div class="min-w-0">
+            <div class="flex items-center gap-1.5">
+                <p class="text-white font-semibold text-sm truncate leading-tight">Budi Santoso</p>
+                <span class="shrink-0 bg-gold/20 border border-gold/40 text-gold text-[9px] font-extrabold px-1.5 py-0.5 rounded leading-none tracking-wide">PRO</span>
             </div>
-
-            {{-- Right side --}}
-            <div class="flex items-center gap-3">
-                {{-- PRO badge --}}
-                <span class="pro-badge hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold text-white shadow">
-                    <i class="bi bi-gem"></i> PRO
-                </span>
-
-                {{-- Avatar & name --}}
-                <div class="hidden md:flex items-center gap-2.5">
-                    <img class="h-9 w-9 rounded-full object-cover border-2 border-secondary shadow-sm"
-                         src="https://ui-avatars.com/api/?name=Budi+Santoso&background=4D81EE&color=fff" alt="Profil">
-                    <div class="text-right leading-tight">
-                        <p class="text-xs font-extrabold text-dark">Budi Santoso</p>
-                        <span class="text-[10px] text-green-600 font-bold">● Verified Tutor</span>
-                    </div>
-                </div>
-
-                <div class="h-7 w-px bg-secondary hidden md:block"></div>
-
-                <a href="/login" class="text-xs font-bold text-red-500 hover:text-red-600 transition hidden md:block">
-                    <i class="bi bi-box-arrow-right mr-1"></i>Keluar
-                </a>
-
-                {{-- Mobile burger --}}
-                <button id="tutor-mobile-btn" class="md:hidden text-gray-500 hover:text-dark">
-                    <i class="bi bi-list text-2xl"></i>
-                </button>
-            </div>
-
+            <p class="text-slate-500 text-xs truncate mt-0.5">Teknik Informatika</p>
         </div>
     </div>
+</div>
 
-    {{-- Mobile menu --}}
-    <div id="tutor-mobile-menu" class="hidden md:hidden bg-white border-t border-secondary px-4 pt-3 pb-4 space-y-1">
-        <a href="/tutors/dashboard"
-           class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold
-                  {{ $page === 'dashboard' ? 'bg-surface text-primary' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="bi bi-grid"></i> Dashboard
-        </a>
-        <a href="/tutors/dashboard?page=packages"
-           class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold
-                  {{ $page === 'packages' ? 'bg-surface text-primary' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="bi bi-box-seam"></i> Paket Kursus
-        </a>
-        <a href="/tutors/dashboard?page=reviews"
-           class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold
-                  {{ $page === 'reviews' ? 'bg-surface text-primary' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="bi bi-star"></i> Ulasan Murid
-        </a>
-        <div class="pt-2 border-t border-secondary">
-            <a href="/login" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-red-500 hover:bg-red-50">
-                <i class="bi bi-box-arrow-right"></i> Keluar
-            </a>
-        </div>
-    </div>
+{{-- ── Navigasi ────────────────────────────────────────────────────────── --}}
+<nav class="flex-1 overflow-y-auto px-3 py-3 space-y-0.5">
+    <p class="text-slate-600 text-[10px] font-semibold uppercase tracking-widest px-3 mb-2">Menu Utama</p>
+    @foreach($nav as $item)
+    @php $active = $route === $item['name']; @endphp
+    <a href="{{ route($item['name']) }}"
+       onclick="closeDrawer()"
+       class="nav-item {{ $active ? 'active' : '' }} flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer transition-colors">
+        <i class="bi {{ $item['icon'] }} text-base {{ $active ? '' : 'text-slate-500' }}"></i>
+        <span class="text-sm {{ $active ? 'font-semibold' : 'text-slate-400 font-medium' }}">{{ $item['label'] }}</span>
+        @if($active)
+        <span class="ml-auto w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
+        @endif
+    </a>
+    @endforeach
 </nav>
 
-<script>
-    document.getElementById('tutor-mobile-btn').addEventListener('click', function () {
-        document.getElementById('tutor-mobile-menu').classList.toggle('hidden');
-    });
-</script>
+{{-- ── Footer sidebar ──────────────────────────────────────────────────── --}}
+<div class="px-3 py-4 border-t border-sidebar-border space-y-0.5 shrink-0">
+    <a href="{{ route('tutors') }}"
+       class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-md transition-colors">
+        <i class="bi bi-person-badge text-base text-slate-500"></i>
+        <span class="text-sm text-slate-400 font-medium">Profil Publik</span>
+    </a>
+    <a href="{{ route('login') }}"
+       class="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-red-500/10 transition-colors">
+        <i class="bi bi-box-arrow-right text-base text-red-500/70"></i>
+        <span class="text-sm text-red-400/80 font-medium">Keluar</span>
+    </a>
+</div>

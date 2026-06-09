@@ -6,7 +6,7 @@
             <div class="md:col-span-5">
                 <a href="#" class="flex items-center gap-2 mb-4">
                     <div class="bg-white px-3 py-2 rounded-lg">
-                        <img src="assets/logo/tutorium-logo.png"
+                        <img src="{{ asset('assets/logo/tutorium-logo.png') }}"
                             alt="Tutorium"
                             class="h-10 w-auto">
                     </div>

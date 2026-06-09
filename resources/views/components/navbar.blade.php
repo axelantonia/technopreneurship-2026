@@ -3,8 +3,8 @@
         <div class="flex justify-between items-center h-20">
 
             <!-- Logo -->
-            <a href="#" class="flex items-center gap-2">
-                <img src="assets/logo/tutorium-logo.png" alt="Tutorium" class="h-16 w-auto">
+                <a href="/" class="flex items-center gap-2">
+                <img src="{{ asset('assets/logo/tutorium-logo.png') }}" alt="Tutorium" class="h-16 w-auto">
             </a>
 
             <!-- Mobile button -->

@@ -22,6 +22,11 @@ Route::get('/checkout',        [BookingController::class, 'checkout'])->name('ch
 Route::post('/checkout',       [BookingController::class, 'confirmPayment'])->name('checkout.confirm');
 Route::get('/payment',         [BookingController::class, 'paymentStatus'])->name('payment');
 
+// ── Student Panel ─────────────────────────────────────────────────────────
+Route::get('/student/profile',  fn() => view('student.profile'))->name('student.profile');
+Route::get('/student/history',  fn() => view('student.history'))->name('student.history');
+Route::get('/student/rating',   fn() => view('student.rating'))->name('student.rating');
+
 Route::get('/login',  fn() => view('pages.login'))->name('login');
 Route::get('/signup', fn() => view('pages.signup'))->name('signup');
 Route::get('/chat/{tutor_id?}', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat');

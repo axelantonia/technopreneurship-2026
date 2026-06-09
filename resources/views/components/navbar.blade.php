@@ -37,8 +37,7 @@
 
                     <!-- Dropdown -->
                     <div id="profile-menu" class="hidden absolute right-0 mt-3 w-44 bg-white border border-gray-200 rounded-xl shadow-lg py-2 z-50">
-                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Profile</a>
-                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Settings</a>
+                        <a href="student/history" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Profile</a>
                         <a href="/login" class="block px-4 py-2 text-red-500 hover:bg-red-50">Logout</a>
                     </div>
                 </div>

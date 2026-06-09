@@ -15,11 +15,11 @@
             </div>
 
             <!-- Menu -->
-            <div class="hidden lg:flex flex-1 justify-center space-x-8">
-                <a href="#" class="text-blue-600 font-bold">Beranda</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Cari Tutor</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Cara Kerja</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">FAQ</a>
+            <div class="hidden lg:flex flex-1 justify-center space-x-5">
+                <a href="/" class="text-blue-600 font-bold">Beranda</a>
+                <a href="/tutors" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Cari Tutor</a>
+                <a href="#" data-modal="kebijakan-privasi" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Kebijakan Privasi</a>
+                <a href="/#faq" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">FAQ</a>
             </div>
 
             <!-- PROFILE ICON -->

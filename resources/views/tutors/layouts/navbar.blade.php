@@ -1,13 +1,15 @@
 @php
     $route = request()->route()?->getName() ?? '';
     $nav = [
-        ['name'=>'tutor.dashboard', 'icon'=>'bi-grid-1x2-fill',    'label'=>'Dashboard'],
-        ['name'=>'tutor.packages',  'icon'=>'bi-box-seam-fill',    'label'=>'Paket Kursus'],
-        ['name'=>'tutor.schedule',  'icon'=>'bi-calendar-week',    'label'=>'Jadwal Mengajar'],
-        ['name'=>'tutor.financial', 'icon'=>'bi-wallet2',          'label'=>'Keuangan & Saldo'],
-        ['name'=>'tutor.chat',      'icon'=>'bi-chat-text-fill',   'label'=>'Ruang Chat'],
+        ['name'=>'tutor.dashboard', 'icon'=>'bi-grid-1x2-fill',      'label'=>'Dashboard'],
+        ['name'=>'tutor.packages',  'icon'=>'bi-box-seam-fill',      'label'=>'Paket Kursus'],
+        ['name'=>'tutor.schedule',  'icon'=>'bi-calendar-week',      'label'=>'Jadwal Mengajar'],
+        ['name'=>'tutor.history',   'icon'=>'bi-clock-history',     'label'=>'Riwayat Mengajar'],
+        ['name'=>'tutor.financial', 'icon'=>'bi-wallet2',            'label'=>'Keuangan & Saldo'],
+        ['name'=>'tutor.chat',       'icon'=>'bi-chat-text-fill',     'label'=>'Ruang Chat'],
     ];
 @endphp
+
 
 {{-- ── Brand ──────────────────────────────────────────────────────────── --}}
 <div class="flex items-center gap-2.5 px-5 h-14 border-b border-sidebar-border shrink-0">

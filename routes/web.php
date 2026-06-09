@@ -11,6 +11,8 @@ Route::get('/tutor/packages',  fn() => view('tutors.packages'))->name('tutor.pac
 Route::get('/tutor/schedule',  fn() => view('tutors.schedule'))->name('tutor.schedule');
 Route::get('/tutor/financial', fn() => view('tutors.financial'))->name('tutor.financial');
 Route::get('/tutor/chat',      fn() => view('tutors.chat'))->name('tutor.chat');
+Route::get('/tutor/history',  fn() => view('tutors.history'))->name('tutor.history');
+
 
 Route::get('/tutors',              [BookingController::class, 'tutorList'])->name('tutors');
 Route::get('/tutors/dashboard',    fn() => view('tutors.dashboard'))->name('tutors.dashboard');

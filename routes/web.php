@@ -13,5 +13,5 @@ Route::get('/payment',         [BookingController::class, 'paymentStatus'])->nam
 
 Route::get('/login',  fn() => view('pages.login'))->name('login');
 Route::get('/signup', fn() => view('pages.signup'))->name('signup');
-Route::view('/chat',    'pages.chat')->name('chat');
+Route::get('/chat/{tutor_id?}', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat');
 Route::view('/voucher', 'pages.belivoucher')->name('belivoucher');

@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('chat') }}" class="w-14 h-[56px] bg-primary hover:bg-primary-hover text-white rounded-xl flex items-center justify-center transition-all shadow-lg shadow-blue-200 active:scale-95">
+                        <a href="{{ route('chat', $tutor['id']) }}" class="w-14 h-[56px] bg-primary hover:bg-primary-hover text-white rounded-xl flex items-center justify-center transition-all shadow-lg shadow-blue-200 active:scale-95">
                             <i class="bi bi-chat-dots-fill text-lg"></i>
                         </a>
                         <button type="submit" id="btn-book"
@@ -156,7 +156,7 @@
     </div>
 </div>
 
-<a href="{{ route('chat') }}"
+<a href="{{ route('chat', $tutor['id']) }}"
    class="fixed bottom-6 right-6 w-12 h-12 bg-surface border border-secondary rounded-2xl shadow-md flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:shadow-lg transition">
     <i class="bi bi-chat-dots-fill text-lg"></i>
 </a>

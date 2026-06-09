@@ -1,6 +1,7 @@
-{{-- resources/views/tutors/reviews.blade.php --}}
-{{-- Di-include oleh dashboard.blade.php saat ?page=reviews --}}
+@extends('tutors.layouts.app')
+@section('title', 'Reviews')
 
+@section('content')
 @php
 $reviews = [
     ['name'=>'Farel',   'univ'=>'Universitas Kristen Petra',         'rating'=>5, 'matkul'=>'Web Development (Laravel)',   'tanggal'=>'12 Jun 2026', 'text'=>'Kak Budi penjelasannya enak banget, materi Laravel yang susah jadi gampang dipahami! Langsung bisa implementasi buat tugas akhir.'],
@@ -169,3 +170,4 @@ foreach ($reviews as $r) $dist[$r['rating']]++;
         setTimeout(() => toast.remove(), 3000);
     }
 </script>
+@endsection

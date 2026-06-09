@@ -36,8 +36,10 @@
                     <label class="block text-sm font-bold text-dark mb-2">Jurusan</label>
                     <select id="filter-jurusan" class="w-full bg-surface border border-secondary text-gray-700 py-3 px-4 rounded-xl focus:ring-2 focus:ring-primary focus:outline-none transition-all">
                         <option value="Semua Jurusan">Semua Jurusan</option>
-                        <option value="Informatika">Informatika</option>
-                        <option value="Sistem Informasi">Sistem Informasi</option>
+                        @php $jurusanList = collect($tutors)->pluck('jurusan')->unique()->sort()->values() @endphp
+                        @foreach($jurusanList as $j)
+                            <option value="{{ $j }}">{{ $j }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -70,6 +72,7 @@
                             <option value="Rabu">Rabu</option>
                             <option value="Kamis">Kamis</option>
                             <option value="Jumat">Jumat</option>
+                            <option value="Sabtu">Sabtu</option>
                         </select>
                         <input type="time" id="filter-jam" class="text-sm bg-surface border border-secondary py-2.5 px-3 rounded-xl focus:ring-2 focus:ring-primary focus:outline-none">
                     </div>
@@ -100,29 +103,22 @@
             </div>
 
             <div id="tutor-wrapper" class="space-y-5"></div>
-
             <div id="pagination-wrapper" class="mt-12 flex justify-center gap-2"></div>
         </main>
     </div>
 </div>
 
 <script>
-    // Data dummy 15 data
-    const tutors = Array.from({ length: 15 }, (_, i) => ({
-        id: i + 1,
-        name: i % 3 === 0 ? "Budi Santoso" : (i % 3 === 1 ? "Amanda Kurnia" : "Samuel Wijaya"),
-        kampus: i < 8 ? 'Universitas Kristen Petra' : 'Universitas Surabaya (UBAYA)',
-        jurusan: i % 2 === 0 ? 'Informatika' : 'Sistem Informasi',
-        price: 40000 + (i * 5000),
-        rating: (4.5 + (i % 5) / 10).toFixed(1),
-        modes: i % 3 === 0 ? ['Online'] : ['Online', 'Offline'],
-        availableDays: ['Senin', 'Rabu', 'Jumat'],
-        color: i % 3 === 0 ? '3b82f6' : (i % 3 === 1 ? '10b981' : 'f59e0b')
-    }));
+    // Data dari PHP
+    const tutors = @json($tutors);
 
     let currentPage = 1;
     const itemsPerPage = 7;
     let filtered = [];
+
+    function formatRupiah(n) {
+        return 'Rp ' + n.toLocaleString('id-ID');
+    }
 
     function render() {
         const container = document.getElementById('tutor-wrapper');
@@ -132,45 +128,44 @@
         const pageData = filtered.slice(start, start + itemsPerPage);
         document.getElementById('total-text').textContent = filtered.length;
 
-        if(pageData.length === 0) {
+        if (pageData.length === 0) {
             container.innerHTML = `
                 <div class="bg-white p-10 rounded-3xl border border-secondary text-center">
                     <i class="bi bi-search text-4xl text-gray-300 mb-3 block"></i>
                     <h4 class="text-lg font-bold text-dark mb-1">Tutor tidak ditemukan</h4>
                     <p class="text-gray-500 text-sm">Coba ubah filter pencarianmu untuk melihat hasil yang lain.</p>
-                </div>
-            `;
+                </div>`;
             document.getElementById('pagination-wrapper').innerHTML = '';
             return;
         }
 
         pageData.forEach(t => {
-            const detailRoute = `/tutors/${t.id}`;
+            const matkulBadges = t.matkul.slice(0, 2).map(m =>
+                `<span class="text-[10px] bg-surface border border-secondary text-gray-600 px-3 py-1.5 rounded-lg font-bold uppercase tracking-wide">${m}</span>`
+            ).join('');
 
             container.innerHTML += `
                 <div class="bg-white p-6 rounded-3xl border border-secondary flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 group">
                     <div class="md:w-1/4 flex flex-col items-center">
-                        <img src="https://ui-avatars.com/api/?name=${t.name}&background=${t.color}&color=fff&size=150" class="w-24 h-24 rounded-full mb-3 ring-4 ring-surface group-hover:ring-blue-100 transition-all">
+                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=${t.color}&color=fff&size=150"
+                             class="w-24 h-24 rounded-full mb-3 ring-4 ring-surface group-hover:ring-blue-100 transition-all">
                         <div class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-lg text-xs font-bold border border-yellow-100 flex items-center gap-1">
                             <i class="bi bi-star-fill"></i> ${t.rating}
                         </div>
                     </div>
                     <div class="md:w-2/4">
-                        <h4 class="font-bold text-xl text-dark mb-1 group-hover:text-primary transition-colors">${t.name} <i class="bi bi-patch-check-fill text-primary"></i></h4>
+                        <h4 class="font-bold text-xl text-dark mb-1 group-hover:text-primary transition-colors">
+                            ${t.name} <i class="bi bi-patch-check-fill text-primary"></i>
+                        </h4>
                         <p class="text-primary text-sm font-semibold mb-3">${t.jurusan}, ${t.kampus}</p>
-                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">Mahasiswa berprestasi yang siap membantu pengerjaan tugas dan penjelasan materi kuliah sampai paham.</p>
-                        <div class="mt-4 flex gap-2 flex-wrap">
-                            <span class="text-[10px] bg-surface border border-secondary text-gray-600 px-3 py-1.5 rounded-lg font-bold uppercase tracking-wide">
-                                <i class="bi bi-calendar-check mr-1"></i> ${t.availableDays[0]}, ${t.availableDays[1]}
-                            </span>
-                            ${t.modes.includes('Online') ? `<span class="text-[10px] bg-green-50 text-green-600 border border-green-100 px-3 py-1.5 rounded-lg font-bold uppercase tracking-wide">Online</span>` : ''}
-                        </div>
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">${t.bio}</p>
+                        <div class="mt-4 flex gap-2 flex-wrap">${matkulBadges}</div>
                     </div>
                     <div class="md:w-1/4 flex flex-col justify-center items-end md:border-l border-secondary md:pl-6 pt-4 md:pt-0 border-t md:border-t-0 mt-4 md:mt-0">
                         <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider mb-1">Mulai dari</p>
-                        <h5 class="font-extrabold text-2xl text-dark">Rp ${t.price.toLocaleString()}<span class="text-xs text-gray-400 font-normal">/jam</span></h5>
-
-                        <a href="${detailRoute}" class="w-full text-center bg-primary text-white py-3 rounded-2xl mt-5 text-sm font-bold shadow-lg shadow-blue-200 hover:bg-primary-hover transition-all active:scale-95">
+                        <h5 class="font-extrabold text-2xl text-dark">${formatRupiah(t.price)}<span class="text-xs text-gray-400 font-normal">/jam</span></h5>
+                        <a href="/tutors/${t.id}"
+                           class="w-full text-center bg-primary text-white py-3 rounded-2xl mt-5 text-sm font-bold shadow-lg shadow-blue-200 hover:bg-primary-hover transition-all active:scale-95">
                             Lihat Profil
                         </a>
                     </div>
@@ -183,47 +178,43 @@
         const total = Math.ceil(filtered.length / itemsPerPage);
         const wrapper = document.getElementById('pagination-wrapper');
         wrapper.innerHTML = '';
-        if(total <= 1) return;
-
-        for(let i=1; i<=total; i++) {
+        if (total <= 1) return;
+        for (let i = 1; i <= total; i++) {
             wrapper.innerHTML += `
-                <button onclick="goToPage(${i})" class="w-10 h-10 rounded-xl font-bold transition-all ${i === currentPage ? 'bg-primary text-white border-primary shadow-lg shadow-blue-200' : 'bg-white text-gray-500 hover:bg-surface border border-secondary hover:text-primary'}">
+                <button onclick="goToPage(${i})" class="w-10 h-10 rounded-xl font-bold transition-all ${i === currentPage ? 'bg-primary text-white shadow-lg shadow-blue-200' : 'bg-white text-gray-500 hover:bg-surface border border-secondary hover:text-primary'}">
                     ${i}
                 </button>`;
         }
     }
 
-    window.goToPage = (p) => {
-        currentPage = p;
-        render();
-        window.scrollTo({top: 350, behavior: 'smooth'});
-    };
+    window.goToPage = (p) => { currentPage = p; render(); window.scrollTo({ top: 350, behavior: 'smooth' }); };
 
     window.applyFilters = () => {
-        const kampus = document.getElementById('input-kampus').value;
+        const kampus  = document.getElementById('input-kampus').value;
         const jurusan = document.getElementById('filter-jurusan').value;
-        const harga = parseInt(document.getElementById('range-harga').value);
-        const hari = document.getElementById('filter-hari').value;
-        const sort = document.getElementById('sort-select').value;
-        const modes = Array.from(document.querySelectorAll('.filter-mode:checked')).map(cb => cb.value);
+        const matkul  = document.getElementById('filter-matkul').value.toLowerCase().trim();
+        const harga   = parseInt(document.getElementById('range-harga').value);
+        const hari    = document.getElementById('filter-hari').value;
+        const sort    = document.getElementById('sort-select').value;
+        const modes   = Array.from(document.querySelectorAll('.filter-mode:checked')).map(cb => cb.value);
 
         filtered = tutors.filter(t => {
-            const matchKampus = t.kampus === kampus;
+            const matchKampus  = t.kampus === kampus;
             const matchJurusan = jurusan === 'Semua Jurusan' || t.jurusan === jurusan;
-            const matchHarga = t.price <= harga;
-            const matchMode = t.modes.some(m => modes.includes(m));
-            const matchHari = hari === 'Semua Hari' || hari === 'Hari' || t.availableDays.includes(hari);
-            return matchKampus && matchJurusan && matchHarga && matchMode && matchHari;
+            const matchHarga   = t.price <= harga;
+            const matchMode    = t.modes.some(m => modes.includes(m));
+            const matchHari    = hari === 'Semua Hari' || hari === 'Hari' || t.availableDays.includes(hari);
+            const matchMatkul  = matkul === '' || t.matkul.some(m => m.toLowerCase().includes(matkul));
+            return matchKampus && matchJurusan && matchHarga && matchMode && matchHari && matchMatkul;
         });
 
-        if(sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
-        if(sort === 'harga-rendah') filtered.sort((a,b) => a.price - b.price);
+        if (sort === 'rating')       filtered.sort((a, b) => b.rating - a.rating);
+        if (sort === 'harga-rendah') filtered.sort((a, b) => a.price - b.price);
 
         currentPage = 1;
         render();
-    }
+    };
 
-    // Fungsi reset filter ke default
     window.resetFilters = () => {
         document.getElementById('filter-jurusan').value = 'Semua Jurusan';
         document.getElementById('filter-matkul').value = '';
@@ -234,10 +225,10 @@
         document.querySelectorAll('.filter-mode').forEach(cb => cb.checked = true);
         document.getElementById('sort-select').value = 'rekomendasi';
         applyFilters();
-    }
+    };
 
-    document.getElementById('range-harga').oninput = function() {
-        document.getElementById('label-harga').textContent = `Rp ${parseInt(this.value).toLocaleString()}`;
+    document.getElementById('range-harga').oninput = function () {
+        document.getElementById('label-harga').textContent = `Rp ${parseInt(this.value).toLocaleString('id-ID')}`;
     };
 
     window.toggleDropdown = () => document.getElementById('dropdown-kampus').classList.toggle('hidden');
@@ -248,7 +239,6 @@
         applyFilters();
     };
 
-    // Close dropdown kalau klik di luar
     document.addEventListener('click', (e) => {
         const selector = document.getElementById('kampus-selector');
         const dropdown = document.getElementById('dropdown-kampus');
@@ -261,11 +251,7 @@
 </script>
 
 <style>
-    /* Styling khusus untuk input range supaya lebih rapi */
-    input[type=range]::-webkit-slider-thumb {
-        margin-top: -4px;
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-    }
+    input[type=range]::-webkit-slider-thumb { margin-top: -4px; box-shadow: 0 0 10px rgba(59,130,246,0.3); }
     .sticky { position: -webkit-sticky; position: sticky; }
 </style>
 

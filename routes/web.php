@@ -1,29 +1,17 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookingController;
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+Route::get('/', fn() => view('pages.home'))->name('home');
 
-Route::get('/tutors', function () {
-    return view('pages.tutors');
-})->name('tutors');
+Route::get('/tutors',          [BookingController::class, 'tutorList'])->name('tutors');
+Route::get('/tutors/{id}',     [BookingController::class, 'tutorDetail'])->name('tutor.detail');
+Route::get('/checkout',        [BookingController::class, 'checkout'])->name('checkout');
+Route::post('/checkout',       [BookingController::class, 'confirmPayment'])->name('checkout.confirm');
+Route::get('/payment',         [BookingController::class, 'paymentStatus'])->name('payment');
 
-Route::get('/tutors/{id}', function ($id) {
-    // Pastikan tulisannya 'tutors-detail' sesuai nama file kamu
-    return view('pages.tutors-detail', ['id' => $id]);
-})->name('tutor.detail');
-
-Route::get('/login', function () {
-    return view('pages.login');
-})->name('login');
-
-Route::get('/signup', function () {
-    return view('pages.signup');
-})->name('signup');
-
-Route::view('/chat', 'pages.chat')->name('chat');
-
+Route::get('/login',  fn() => view('pages.login'))->name('login');
+Route::get('/signup', fn() => view('pages.signup'))->name('signup');
+Route::view('/chat',    'pages.chat')->name('chat');
 Route::view('/voucher', 'pages.belivoucher')->name('belivoucher');
-
-Route::view('/checkout', 'pages.checkout')->name('checkout');

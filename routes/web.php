@@ -5,10 +5,11 @@ use App\Http\Controllers\BookingController;
 
 Route::get('/', fn() => view('pages.home'))->name('home');
 Route::get('/home', fn() => redirect('/'));
-Route::get('/tutors/dashboard', fn() => view('tutors.dashboard'))->name('tutors.dashboard');
+Route::get('/tutor/dashboard', fn() => view('tutors.dashboard'))->name('tutor.dashboard');
 
-Route::get('/tutors',          [BookingController::class, 'tutorList'])->name('tutors');
-Route::get('/tutors/{id}',     [BookingController::class, 'tutorDetail'])->name('tutor.detail');
+Route::get('/tutors',              [BookingController::class, 'tutorList'])->name('tutors');
+Route::get('/tutors/dashboard',    fn() => view('tutors.dashboard'))->name('tutors.dashboard');
+Route::get('/tutors/{id}',         [BookingController::class, 'tutorDetail'])->name('tutor.detail');
 Route::get('/checkout',        [BookingController::class, 'checkout'])->name('checkout');
 Route::post('/checkout',       [BookingController::class, 'confirmPayment'])->name('checkout.confirm');
 Route::get('/payment',         [BookingController::class, 'paymentStatus'])->name('payment');

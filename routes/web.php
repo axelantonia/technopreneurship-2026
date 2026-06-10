@@ -13,6 +13,8 @@ Route::get('/tutor/financial', fn() => view('tutors.financial'))->name('tutor.fi
 Route::get('/tutor/chat',      fn() => view('tutors.chat'))->name('tutor.chat');
 Route::get('/tutor/history',  fn() => view('tutors.history'))->name('tutor.history');
 Route::get('/tutor/review',  fn() => view('tutors.reviews'))->name('tutor.review');
+Route::get('/tutor/subscription',  fn() => view('tutors.subscription'))->name('tutor.subscription');
+
 
 
 Route::get('/tutors',              [BookingController::class, 'tutorList'])->name('tutors');

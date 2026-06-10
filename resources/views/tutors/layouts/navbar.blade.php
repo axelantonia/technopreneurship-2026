@@ -8,6 +8,7 @@
         ['name'=>'tutor.financial', 'icon'=>'bi-wallet2',            'label'=>'Keuangan & Saldo'],
         ['name'=>'tutor.chat',       'icon'=>'bi-chat-text-fill',     'label'=>'Ruang Chat'],
         ['name'=>'tutor.review',       'icon'=>'bi-star-fill',     'label'=>'Reviews'],
+        ['name'=>'tutor.subscription',       'icon'=>'bi-trophy',     'label'=>'Subscription'],
     ];
 @endphp
 

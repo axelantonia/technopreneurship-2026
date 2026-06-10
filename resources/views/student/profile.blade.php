@@ -119,7 +119,135 @@
     </div>
 </div>
 
+{{-- ── Subscription Status Card ────────────────────────────────────────────── --}}
+@php
+    // Demo: ubah ke true untuk preview tampilan Premium Member
+    $isPremium = false;
+    $subscription = $isPremium ? [
+        'plan'       => 'Mahasiswa Premium',
+        'status'     => 'Premium',
+        'start_date' => '1 Mei 2026',
+        'end_date'   => '1 Juni 2026',
+        'days_left'  => 21,
+    ] : [
+        'plan'       => 'Free',
+        'status'     => 'Free',
+        'start_date' => '-',
+        'end_date'   => '-',
+        'days_left'  => null,
+    ];
+@endphp
+
+<div class="rounded-2xl mb-6 overflow-hidden" style="border:1.5px solid {{ $isPremium ? '#f59e0b' : '#3B5B8A' }}; box-shadow: 0 4px 24px rgba({{ $isPremium ? '245,158,11' : '59,91,138' }},.12);">
+
+    {{-- Header bar --}}
+    <div class="px-6 py-4 flex items-center justify-between"
+         style="background: linear-gradient(135deg, {{ $isPremium ? '#1c0a00, #451a03' : '#1e3a5f, #283044' }});">
+        <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center"
+                 style="background: rgba({{ $isPremium ? '245,158,11' : '77,129,238' }},.2);">
+                <i class="bi bi-{{ $isPremium ? 'star-fill' : 'person-badge' }} text-base"
+                   style="color: {{ $isPremium ? '#fbbf24' : '#7ba7f5' }};"></i>
+            </div>
+            <div>
+                <h3 class="font-extrabold text-white text-sm">Status Berlangganan</h3>
+                <p class="text-[11px] mt-0.5" style="color: rgba(255,255,255,0.5);">
+                    {{ $isPremium ? 'Nikmati semua keistimewaan Premium' : 'Upgrade untuk pengalaman belajar lebih optimal' }}
+                </p>
+            </div>
+        </div>
+
+        {{-- Status Badge --}}
+        @if($isPremium)
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                  style="background: linear-gradient(90deg,#f59e0b,#fbbf24); color:#451a03; box-shadow:0 3px 12px rgba(245,158,11,.4);">
+                <i class="bi bi-patch-check-fill text-[11px]"></i> Premium Member
+            </span>
+        @else
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                  style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.15);">
+                <i class="bi bi-person text-[11px]"></i> Free
+            </span>
+        @endif
+    </div>
+
+    {{-- Content --}}
+    <div class="p-6 bg-white">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
+
+            {{-- Status --}}
+            <div class="rounded-xl p-4" style="background:{{ $isPremium ? '#fffbeb' : '#EEF4FF' }}; border:1px solid {{ $isPremium ? '#fde68a' : '#c0d3f0' }};">
+                <p class="text-[10px] font-extrabold uppercase tracking-widest mb-1.5"
+                   style="color:{{ $isPremium ? '#d97706' : '#64748b' }};">Status</p>
+                <p class="text-sm font-extrabold flex items-center gap-1.5"
+                   style="color:{{ $isPremium ? '#92400e' : '#283044' }};">
+                    <i class="bi bi-{{ $isPremium ? 'star-fill' : 'person' }} text-[13px]"
+                       style="color:{{ $isPremium ? '#f59e0b' : '#4D81EE' }};"></i>
+                    {{ $subscription['status'] }}
+                </p>
+            </div>
+
+            {{-- Paket --}}
+            <div class="rounded-xl p-4" style="background:#EEF4FF; border:1px solid #c0d3f0;">
+                <p class="text-[10px] font-extrabold uppercase tracking-widest mb-1.5" style="color:#64748b;">Paket</p>
+                <p class="text-sm font-extrabold" style="color:#283044;">{{ $subscription['plan'] }}</p>
+            </div>
+
+            {{-- Mulai Berlangganan --}}
+            <div class="rounded-xl p-4" style="background:#EEF4FF; border:1px solid #c0d3f0;">
+                <p class="text-[10px] font-extrabold uppercase tracking-widest mb-1.5" style="color:#64748b;">Mulai</p>
+                <p class="text-sm font-extrabold" style="color:#283044;">{{ $subscription['start_date'] }}</p>
+            </div>
+
+            {{-- Berakhir --}}
+            <div class="rounded-xl p-4" style="background:#EEF4FF; border:1px solid #c0d3f0;">
+                <p class="text-[10px] font-extrabold uppercase tracking-widest mb-1.5" style="color:#64748b;">Berakhir</p>
+                <p class="text-sm font-extrabold" style="color:#283044;">{{ $subscription['end_date'] }}</p>
+            </div>
+        </div>
+
+        @if($isPremium)
+            {{-- Premium: days remaining bar --}}
+            <div class="rounded-xl p-4" style="background:#fffbeb; border:1px solid #fde68a;">
+                <div class="flex justify-between items-center mb-2">
+                    <p class="text-[11px] font-extrabold uppercase tracking-widest" style="color:#d97706;">
+                        <i class="bi bi-hourglass-split mr-1"></i>Masa Aktif
+                    </p>
+                    <span class="text-[11px] font-extrabold" style="color:#92400e;">{{ $subscription['days_left'] }} hari tersisa</span>
+                </div>
+                <div class="w-full rounded-full h-2.5" style="background:#fde68a;">
+                    <div class="h-2.5 rounded-full transition-all"
+                         style="width:{{ round($subscription['days_left'] / 30 * 100) }}%; background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>
+                </div>
+                <p class="text-[10px] mt-2" style="color:#d97706;">
+                    <i class="bi bi-info-circle mr-1"></i>Berakhir pada {{ $subscription['end_date'] }} — Perpanjang sebelum habis!
+                </p>
+            </div>
+        @else
+            {{-- Free: Upgrade CTA --}}
+            <div class="rounded-xl p-5 flex flex-col sm:flex-row items-center gap-4"
+                 style="background:linear-gradient(135deg,#EEF4FF,#e0ecff); border:1.5px dashed #4D81EE;">
+                <div class="flex-1 text-center sm:text-left">
+                    <p class="font-extrabold text-sm mb-1" style="color:#283044;">
+                        <i class="bi bi-lightning-charge-fill mr-1" style="color:#4D81EE;"></i>
+                        Buka Semua Fitur Premium
+                    </p>
+                    <p class="text-xs leading-relaxed" style="color:#64748b;">
+                        AI Recommendation, prioritas booking tutor, learning analytics lengkap &amp; voucher eksklusif — mulai hanya Rp35.000/bulan.
+                    </p>
+                </div>
+                <a href="{{ route('home') }}#pricing"
+                   class="shrink-0 inline-flex items-center gap-2 text-sm font-extrabold px-5 py-2.5 rounded-xl transition-all hover:scale-105 active:scale-95"
+                   style="background:linear-gradient(135deg,#4D81EE,#3B5B8A); color:#fff; box-shadow:0 6px 20px rgba(77,129,238,.35);">
+                    <i class="bi bi-arrow-up-circle-fill"></i> Upgrade Sekarang
+                </a>
+            </div>
+        @endif
+    </div>
+</div>
+
 {{-- ── Two-Column Detail Grid ──────────────────────────────────────────────────── --}}
+
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
     {{-- Mata Kuliah yang Dikuasai --}}

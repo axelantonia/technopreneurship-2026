@@ -35,7 +35,7 @@
                     <li><a href="#" class="text-white/80 hover:text-white transition text-sm">Tentang Kami</a></li>
                     <li><a href="#cara-kerja" class="text-white/80 hover:text-white transition text-sm">Cara Kerja</a></li>
                     <li><a href="#" class="text-white/80 hover:text-white transition text-sm">Daftar Jadi Tutor</a></li>
-                    <li><a href="#" class="text-white/80 hover:text-white transition text-sm">Kebijakan Privasi</a></li>
+                    <li><a href="#" data-modal="kebijakan-privasi" class="text-white/80 hover:text-white transition text-sm">Kebijakan Privasi</a></li>
                 </ul>
             </div>
 

@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center h-20">
 
             <!-- Logo -->
-            <a href="#" class="flex items-center gap-2">
+            <a href="{{ route('home') }}" class="flex items-center gap-2">
                 <img src="assets/logo/tutorium-logo.png" alt="Tutorium" class="h-16 w-auto">
             </a>
 
@@ -16,10 +16,10 @@
 
             <!-- Menu -->
             <div class="hidden lg:flex flex-1 justify-center space-x-8">
-                <a href="#" class="text-blue-600 font-bold">Beranda</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Cari Tutor</a>
+                <a href="{{ route('home') }}" class="text-blue-600 font-bold">Beranda</a>
+                <a href="{{ route('tutors') }}" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Cari Tutor</a>
                 <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Cara Kerja</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">FAQ</a>
+                <a href="#faq" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">FAQ</a>
             </div>
 
             <!-- PROFILE ICON -->
@@ -49,10 +49,10 @@
 
     <!-- MOBILE MENU -->
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-4 space-y-2 shadow-lg">
-        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 bg-blue-50">Beranda</a>
-        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Cari Tutor</a>
+        <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 bg-blue-50">Beranda</a>
+        <a href="{{ route('tutors') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Cari Tutor</a>
         <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Cara Kerja</a>
-        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">FAQ</a>
+        <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">FAQ</a>
 
         <!-- Profile Mobile -->
         <div class="pt-4 flex items-center gap-3 px-3 py-2">

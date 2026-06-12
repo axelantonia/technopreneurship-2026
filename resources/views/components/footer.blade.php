@@ -4,12 +4,10 @@
 
             <!-- LOGO + DESC -->
             <div class="md:col-span-5">
-                <a href="#" class="flex items-center gap-2 mb-4">
-                    <div class="bg-white px-3 py-2 rounded-lg">
-                        <img src="assets/logo/tutorium-logo.png"
-                            alt="Tutorium"
-                            class="h-10 w-auto">
-                    </div>
+                <a href="{{ route('home') }}" class="flex items-center gap-2 mb-4">
+                    <img src="assets/logo/white-tut.png"
+                        alt="Tutorium"
+                        class="h-10 w-auto">
                 </a>
 
                 <p class="text-white/80 text-sm leading-relaxed mb-6 max-w-sm">

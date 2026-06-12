@@ -228,7 +228,7 @@
 
             <div class="bg-white rounded-3xl border border-secondary shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col group">
                 <div class="relative mb-4 overflow-hidden rounded-2xl">
-                    <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=3B82F6&color=fff&size=200" alt="Budi Santoso" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="{{ asset('assets/img/profil-budi.jpeg') }}" alt="Budi" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-xl text-xs font-extrabold text-yellow-500 shadow-sm flex items-center gap-1.5 border border-white">
                         <i class="bi bi-star-fill"></i> 4.9
                     </div>
@@ -248,7 +248,7 @@
 
             <div class="bg-white rounded-3xl border border-secondary shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col group">
                 <div class="relative mb-4 overflow-hidden rounded-2xl">
-                    <img src="https://ui-avatars.com/api/?name=Kevin+W&background=3B82F6&color=fff&size=200" alt="Kevin" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="{{ asset('assets/img/profil-kevin.jpg') }}" alt="Kevin" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-xl text-xs font-extrabold text-yellow-500 shadow-sm flex items-center gap-1.5 border border-white">
                         <i class="bi bi-star-fill"></i> 4.8
                     </div>
@@ -268,7 +268,7 @@
 
             <div class="bg-white rounded-3xl border border-secondary shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col group">
                 <div class="relative mb-4 overflow-hidden rounded-2xl">
-                    <img src="https://ui-avatars.com/api/?name=Siska+A&background=3B82F6&color=fff&size=200" alt="Siska" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="{{ asset('assets/img/profil-siska.jpg') }}" alt="Siska" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-xl text-xs font-extrabold text-yellow-500 shadow-sm flex items-center gap-1.5 border border-white">
                         <i class="bi bi-star-fill"></i> 5.0
                     </div>
@@ -288,7 +288,7 @@
 
             <div class="bg-white rounded-3xl border border-secondary shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col group md:hidden lg:flex">
                 <div class="relative mb-4 overflow-hidden rounded-2xl">
-                    <img src="https://ui-avatars.com/api/?name=Dimas+P&background=3B82F6&color=fff&size=200" alt="Dimas" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="{{ asset('assets/img/profil-dimas.jpg') }}" alt="Dimas" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-xl text-xs font-extrabold text-yellow-500 shadow-sm flex items-center gap-1.5 border border-white">
                         <i class="bi bi-star-fill"></i> 4.8
                     </div>
@@ -378,9 +378,61 @@
         <h2 class="text-3xl lg:text-4xl font-extrabold text-dark text-center mb-12 tracking-tight">Frequently Asked Questions</h2>
         <div class="space-y-4">
 
+        <!-- QUESTIONS N ANSWERS -->
             <div class="bg-white rounded-2xl shadow-sm border border-secondary overflow-hidden hover:shadow-md transition-shadow">
                 <input type="checkbox" id="faq-1" class="peer hidden" checked>
                 <label for="faq-1" class="flex justify-between items-center font-bold cursor-pointer p-6 text-dark select-none hover:bg-surface transition-colors">
+                    <span>Apa itu Tutorium?</span>
+                    <span class="transition-transform duration-300 ease-in-out peer-checked:rotate-180 text-primary">
+                        <i class="bi bi-chevron-down"></i>
+                    </span>
+                </label>
+                <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out peer-checked:grid-rows-[1fr]">
+                    <div class="overflow-hidden">
+                        <div class="text-gray-600 px-6 pb-6 pt-4 text-sm leading-relaxed border-t border-secondary/50 bg-surface/30">
+                            Tutorium adalah platform marketplace yang menghubungkan mahasiswa dengan tutor tepercaya, seperti asisten dosen (asdos) dan kakak tingkat (kating) dari universitas yang sama atau kampus berbeda untuk membantu proses belajar akademik.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-secondary overflow-hidden hover:shadow-md transition-shadow">
+                <input type="checkbox" id="faq-2" class="peer hidden" checked>
+                <label for="faq-2" class="flex justify-between items-center font-bold cursor-pointer p-6 text-dark select-none hover:bg-surface transition-colors">
+                    <span>Siapa saja yang bisa menjadi pengajar di Tutorium?</span>
+                    <span class="transition-transform duration-300 ease-in-out peer-checked:rotate-180 text-primary">
+                        <i class="bi bi-chevron-down"></i>
+                    </span>
+                </label>
+                <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out peer-checked:grid-rows-[1fr]">
+                    <div class="overflow-hidden">
+                        <div class="text-gray-600 px-6 pb-6 pt-4 text-sm leading-relaxed border-t border-secondary/50 bg-surface/30">
+                            Pengajar di Tutorium disaring secara ketat dan difokuskan pada asisten dosen (asdos) serta kakak tingkat berprestasi yang telah melewati kurikulum matkul terkait, sehingga materi yang diajarkan sangat relevan dengan kisi-kisi ujian kampus mahasiswa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-secondary overflow-hidden hover:shadow-md transition-shadow">
+                <input type="checkbox" id="faq-3" class="peer hidden" checked>
+                <label for="faq-3" class="flex justify-between items-center font-bold cursor-pointer p-6 text-dark select-none hover:bg-surface transition-colors">
+                    <span>Apa keuntungan dari sistem Poin di Tutorium?</span>
+                    <span class="transition-transform duration-300 ease-in-out peer-checked:rotate-180 text-primary">
+                        <i class="bi bi-chevron-down"></i>
+                    </span>
+                </label>
+                <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out peer-checked:grid-rows-[1fr]">
+                    <div class="overflow-hidden">
+                        <div class="text-gray-600 px-6 pb-6 pt-4 text-sm leading-relaxed border-t border-secondary/50 bg-surface/30">
+                            Setiap kali Anda menyelesaikan sesi les atau memberikan ulasan, Anda akan mendapatkan poin loyalitas. Poin ini dapat dikumpulkan dan ditukarkan menjadi Voucher Belajar untuk potongan harga pada sesi les berikutnya.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-secondary overflow-hidden hover:shadow-md transition-shadow">
+                <input type="checkbox" id="faq-4" class="peer hidden" checked>
+                <label for="faq-4" class="flex justify-between items-center font-bold cursor-pointer p-6 text-dark select-none hover:bg-surface transition-colors">
                     <span>Bagaimana sistem pembayarannya?</span>
                     <span class="transition-transform duration-300 ease-in-out peer-checked:rotate-180 text-primary">
                         <i class="bi bi-chevron-down"></i>
@@ -389,15 +441,15 @@
                 <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out peer-checked:grid-rows-[1fr]">
                     <div class="overflow-hidden">
                         <div class="text-gray-600 px-6 pb-6 pt-4 text-sm leading-relaxed border-t border-secondary/50 bg-surface/30">
-                            Saat ini pembayaran dilakukan langsung kepada tutor sesuai kesepakatan setelah jadwal dikonfirmasi. Kami sedang mengembangkan sistem pembayaran terintegrasi di dalam aplikasi untuk masa mendatang.
+                            Semua pembayaran dilakukan melalui payment gateway resmi di dalam platform untuk menghindari penipuan atau sistem pembayaran manual yang tidak teratur. Dana mahasiswa akan diteruskan ke tutor setelah sesi les dinyatakan selesai secara valid.
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="bg-white rounded-2xl shadow-sm border border-secondary overflow-hidden hover:shadow-md transition-shadow">
-                <input type="checkbox" id="faq-2" class="peer hidden">
-                <label for="faq-2" class="flex justify-between items-center font-bold cursor-pointer p-6 text-dark select-none hover:bg-surface transition-colors">
+                <input type="checkbox" id="faq-5" class="peer hidden">
+                <label for="faq-5" class="flex justify-between items-center font-bold cursor-pointer p-6 text-dark select-none hover:bg-surface transition-colors">
                     <span>Apakah bisa ganti jadwal jika berhalangan?</span>
                     <span class="transition-transform duration-300 ease-in-out peer-checked:rotate-180 text-primary">
                         <i class="bi bi-chevron-down"></i>
@@ -406,29 +458,11 @@
                 <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out peer-checked:grid-rows-[1fr]">
                     <div class="overflow-hidden">
                         <div class="text-gray-600 px-6 pb-6 pt-4 text-sm leading-relaxed border-t border-secondary/50 bg-surface/30">
-                            Bisa! Kamu cukup menghubungi tutor melalui kontak yang tertera setelah booking berhasil, maksimal H-1 sebelum jadwal yang ditentukan untuk melakukan reschedule.
+                            Tentu bisa! Kamu cukup menghubungi tutor melalui kontak yang tertera setelah booking berhasil, maksimal H-1 sebelum jadwal yang ditentukan untuk melakukan reschedule.
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="bg-white rounded-2xl shadow-sm border border-secondary overflow-hidden hover:shadow-md transition-shadow">
-                <input type="checkbox" id="faq-3" class="peer hidden">
-                <label for="faq-3" class="flex justify-between items-center font-bold cursor-pointer p-6 text-dark select-none hover:bg-surface transition-colors">
-                    <span>Di mana lokasi offline biasanya dilakukan?</span>
-                    <span class="transition-transform duration-300 ease-in-out peer-checked:rotate-180 text-primary">
-                        <i class="bi bi-chevron-down"></i>
-                    </span>
-                </label>
-                <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out peer-checked:grid-rows-[1fr]">
-                    <div class="overflow-hidden">
-                        <div class="text-gray-600 px-6 pb-6 pt-4 text-sm leading-relaxed border-t border-secondary/50 bg-surface/30">
-                            Lokasi offline biasanya dilakukan di area publik yang nyaman di sekitar kampus asalmu, seperti perpustakaan kampus, ruang belajar mahasiswa, kantin, atau coworking space/cafe terdekat sesuai kesepakatan dengan tutor.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
@@ -520,9 +554,7 @@
             behavior: 'smooth'
         });
     }
-</script>
 
-<script>
     tailwind.config = {
             theme: {
                 extend: {
@@ -540,10 +572,7 @@
                 }
             }
         };
-</script>
 
-
-<script>
     document.addEventListener("DOMContentLoaded", function() {
         const databaseKampus = {
             "Universitas Kristen Petra": ["Informatika", "Sistem Informasi", "Desain Komunikasi Visual (DKV)", "Teknik Sipil", "Manajemen Bisnis", "Ilmu Komunikasi"],
@@ -630,9 +659,7 @@
             }
         });
     });
-</script>
 
-<script>
     let current = 0;
     const items = document.querySelectorAll(".carousel-item");
     const total = items.length;

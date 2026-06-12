@@ -117,12 +117,12 @@
 
                 <div class="flex justify-between">
                     <span>Voucher</span>
-                    <span class="text-green-500 font-bold">- Rp 0</span>
+                    <span class="text-green-500 font-bold">- Rp 10.000</span>
                 </div>
 
                 <div class="flex justify-between font-extrabold text-lg pt-3 border-t text-dark">
                     <span>Total</span>
-                    <span class="text-primary">Rp 65.000</span>
+                    <span class="text-primary">Rp 55.000</span>
                 </div>
 
             </div>

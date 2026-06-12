@@ -7,9 +7,6 @@
 
         {{-- Logo --}}
         <div class="text-center mb-8">
-            <a href="{{ route('home') }}">
-                <img src="/assets/logo/tutorium-logo.png" alt="Tutorium" class="h-12 mx-auto mb-4">
-            </a>
             <h1 class="text-2xl font-extrabold text-dark">Selamat Datang Kembali!</h1>
             <p class="text-gray-500 text-sm mt-1">Masuk ke akun Tutorium kamu</p>
         </div>

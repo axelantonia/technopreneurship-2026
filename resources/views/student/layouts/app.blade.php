@@ -82,10 +82,11 @@
 <header class="lg:hidden fixed top-0 inset-x-0 z-30 h-14 flex items-center justify-between px-4 shadow-sm"
         style="background:#283044; border-bottom:1px solid #36435e;">
     <div class="flex items-center gap-2.5">
-        <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background:#4D81EE;">
+        <img src="{{ asset('assets/logo/tutorium-logo-white.png') }}" alt="Tutorium" class="h-8 w-auto">        
+        <!-- <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background:#4D81EE;">
             <span class="text-white font-extrabold text-xs">T</span>
         </div>
-        <span class="font-bold text-white text-sm tracking-wide">Tutorium</span>
+        <span class="font-bold text-white text-sm tracking-wide">Tutorium</span> -->
     </div>
     <button id="s-open-btn" class="text-slate-300 hover:text-white p-1 transition">
         <i class="bi bi-list text-xl"></i>
@@ -105,10 +106,11 @@
 
         {{-- Brand --}}
         <div class="flex items-center gap-2.5 px-5 h-14 shrink-0" style="border-bottom:1px solid #36435e;">
-            <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style="background:#4D81EE;">
+            <!-- <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style="background:#4D81EE;">
                 <span class="text-white font-extrabold text-xs">T</span>
             </div>
-            <span class="font-bold text-white text-sm tracking-wide">Tutorium</span>
+            <span class="font-bold text-white text-sm tracking-wide">Tutorium</span> -->
+            <img src="{{ asset('assets/logo/tutorium-logo-white.png') }}" alt="Tutorium" class="h-8 w-auto">
             <button class="ml-auto lg:hidden text-slate-400 hover:text-white p-1 transition" onclick="sCloseDrawer()">
                 <i class="bi bi-x-lg"></i>
             </button>

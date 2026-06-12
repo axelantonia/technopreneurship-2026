@@ -66,10 +66,11 @@
 ═══════════════════════════════════════════════════════════ --}}
 <header class="lg:hidden fixed top-0 inset-x-0 z-30 h-14 bg-sidebar border-b border-sidebar-border flex items-center justify-between px-4">
     <div class="flex items-center gap-2.5">
-        <div class="w-7 h-7 rounded bg-accent flex items-center justify-center">
+        <img src="{{ asset('assets/logo/tutorium-logo-white.png') }}" alt="Tutorium" class="h-8 w-auto">
+        <!-- <div class="w-7 h-7 rounded bg-accent flex items-center justify-center">
             <span class="text-white font-extrabold text-xs">T</span>
-        </div>
-        <span class="font-bold text-white text-sm tracking-wide">Tutorium Panel</span>
+        </div> -->
+        <!-- <span class="font-bold text-white text-sm tracking-wide">Tutorium Panel</span> -->
     </div>
     <button id="open-drawer-btn" class="text-slate-400 hover:text-white p-1 transition">
         <i class="bi bi-list text-xl"></i>

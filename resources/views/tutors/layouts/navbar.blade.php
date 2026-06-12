@@ -15,10 +15,11 @@
 
 {{-- ── Brand ──────────────────────────────────────────────────────────── --}}
 <div class="flex items-center gap-2.5 px-5 h-14 border-b border-sidebar-border shrink-0">
-    <div class="w-7 h-7 rounded bg-accent flex items-center justify-center shrink-0">
+    <img src="{{ asset('assets/logo/tutorium-logo-white.png') }}" alt="Tutorium" class="h-8 w-auto">
+    <!-- <div class="w-7 h-7 rounded bg-accent flex items-center justify-center shrink-0">
         <span class="text-white font-extrabold text-xs">T</span>
     </div>
-    <span class="font-bold text-white text-sm tracking-wide">Tutorium</span>
+    <span class="font-bold text-white text-sm tracking-wide">Tutorium</span> -->
     <button class="ml-auto lg:hidden text-slate-500 hover:text-white p-1 transition" onclick="closeDrawer()">
         <i class="bi bi-x-lg"></i>
     </button>
@@ -35,7 +36,7 @@
         <div class="min-w-0">
             <div class="flex items-center gap-1.5">
                 <p class="text-white font-semibold text-sm truncate leading-tight">Budi Santoso</p>
-                <span class="shrink-0 bg-gold/20 border border-gold/40 text-gold text-[9px] font-extrabold px-1.5 py-0.5 rounded leading-none tracking-wide">PRO</span>
+                <span class="shrink-0 bg-gold/20 border border-gold/40 text-gold text-[9px] font-extrabold px-1.5 py-0.5 rounded leading-none tracking-wide">PREMIUM</span>
             </div>
             <p class="text-slate-500 text-xs truncate mt-0.5">Teknik Informatika</p>
         </div>

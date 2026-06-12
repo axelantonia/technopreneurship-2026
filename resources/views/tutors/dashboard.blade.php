@@ -6,7 +6,7 @@
 {{-- Page heading --}}
 <div class="mb-6">
     <h1 class="text-xl font-bold text-ink">Dashboard</h1>
-    <p class="text-sm text-muted mt-0.5">Selamat datang kembali, Kak Budi. Pantau aktivitas mengajarmu.</p>
+    <p class="text-sm text-muted mt-0.5">Selamat datang kembali, Budi. Pantau aktivitas mengajarmu.</p>
 </div>
 
 {{-- ═══ BANNER PENGINGAT KELAS ════════════════════════════════════════════ --}}
@@ -21,7 +21,7 @@
             <p class="text-white text-sm font-medium leading-snug">
                 Jam 14:00 &mdash; 
                 {{-- <span class="text-gold font-semibold" id="countdown-text">15 menit lagi</span> --}}
-                &nbsp;·&nbsp; <strong class="text-white">Randi</strong>
+                 <strong class="text-white">Randi</strong>
                 <span class="text-slate-400">(Laravel Advanced)</span>
             </p>
         </div>
@@ -81,7 +81,7 @@
                     <span id="stat-hours">32</span>
                     <span class="text-base font-normal text-muted"> Jam</span>
                 </p>
-                <p class="text-xs text-muted mt-1">Target bulan ini: 40 Jam</p>
+                <!-- <p class="text-xs text-muted mt-1">Target bulan ini: 40 Jam</p> -->
             </div>
             <div class="w-9 h-9 rounded-md bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
                 <i class="bi bi-clock-history text-gold text-lg"></i>
@@ -105,7 +105,7 @@
                 <p class="text-2xl font-extrabold text-ink mt-1">4.9
                     <span class="text-base font-normal text-muted">/ 5.0</span>
                 </p>
-                <p class="text-xs text-muted mt-1">Berdasarkan 18 ulasan mahasiswa</p>
+                <!-- <p class="text-xs text-muted mt-1">Berdasarkan 18 ulasan mahasiswa</p> -->
             </div>
             <div class="w-9 h-9 rounded-md bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
                 <i class="bi bi-star-fill text-gold text-lg"></i>

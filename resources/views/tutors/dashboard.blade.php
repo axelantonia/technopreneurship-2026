@@ -97,18 +97,23 @@
         </div>
     </div>
 
-    {{-- Card 3: Rating --}}
-    <div class="bg-white border border-border-ui rounded-lg p-5 flex flex-col gap-3">
+    {{-- Card 3: Rating (clickable -> buka modal reviews) --}}
+    <button onclick="toggleReviewsModal()"
+            class="bg-white border border-border-ui rounded-lg p-5 flex flex-col gap-3 text-left hover:border-accent/40 hover:shadow-md transition-all group cursor-pointer w-full">
         <div class="flex items-start justify-between">
             <div>
                 <p class="text-xs font-semibold text-muted uppercase tracking-wide">Rating Ulasan</p>
                 <p class="text-2xl font-extrabold text-ink mt-1">4.9
                     <span class="text-base font-normal text-muted">/ 5.0</span>
                 </p>
-                <!-- <p class="text-xs text-muted mt-1">Berdasarkan 18 ulasan mahasiswa</p> -->
             </div>
-            <div class="w-9 h-9 rounded-md bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
-                <i class="bi bi-star-fill text-gold text-lg"></i>
+            <div class="flex flex-col items-end gap-1.5">
+                <div class="w-9 h-9 rounded-md bg-gold/10 border border-gold/20 flex items-center justify-center">
+                    <i class="bi bi-star-fill text-gold text-lg"></i>
+                </div>
+                <span class="text-[10px] font-semibold text-accent flex items-center gap-1 group-hover:gap-1.5 transition-all">
+                    Lihat Ulasan <i class="bi bi-arrow-right text-[10px]"></i>
+                </span>
             </div>
         </div>
         <div class="flex items-center gap-0.5">
@@ -118,9 +123,9 @@
             <i class="bi bi-star-fill text-gold text-sm"></i>
             <i class="bi bi-star-half text-gold text-sm"></i>
             <span class="ml-2 text-xs font-semibold text-ink">4.9</span>
-            <span class="ml-1 text-xs text-muted">(18)</span>
+            <span class="ml-1 text-xs text-muted">(8)</span>
         </div>
-    </div>
+    </button>
 </div>
 
 {{-- ═══ TABEL JADWAL ════════════════════════════════════════════════════════ --}}
@@ -194,12 +199,134 @@
     </div>
 </div>
 
+{{-- ═══ MODAL REVIEWS ══════════════════════════════════════════════════════ --}}
+<div id="reviews-modal" class="fixed inset-0 z-[100] hidden">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleReviewsModal()"></div>
+    <div class="absolute right-0 top-0 h-full w-full max-w-2xl bg-white shadow-2xl overflow-y-auto flex flex-col">
+        {{-- Header modal --}}
+        <div class="sticky top-0 bg-white border-b border-border-ui px-6 py-4 flex items-center justify-between z-10 shrink-0">
+            <div>
+                <h2 class="text-base font-bold text-ink flex items-center gap-2">
+                    <i class="bi bi-star-fill text-gold"></i> Ulasan dari Murid
+                </h2>
+                <p class="text-xs text-muted mt-0.5">Feedback jujur dari para mahasiswamu</p>
+            </div>
+            <button onclick="toggleReviewsModal()" class="w-8 h-8 rounded-md bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition">
+                <i class="bi bi-x-lg text-sm text-muted"></i>
+            </button>
+        </div>
+        {{-- Body modal: review cards --}}
+        <div class="flex-1 p-6">
+            @php
+            $reviews = [
+                ['name'=>'Farel',   'univ'=>'Universitas Kristen Petra',         'rating'=>5, 'matkul'=>'Web Development (Laravel)',   'tanggal'=>'12 Jun 2026', 'text'=>'Kak Budi penjelasannya enak banget, materi Laravel yang susah jadi gampang dipahami! Langsung bisa implementasi buat tugas akhir.'],
+                ['name'=>'Jess',    'univ'=>'Universitas Negeri Surabaya',        'rating'=>5, 'matkul'=>'Struktur Data',                'tanggal'=>'10 Jun 2026', 'text'=>'Sangat membantu buat persiapan ujian. Recommended buat yang mau belajar ngebut tapi efektif!'],
+                ['name'=>'Andi',    'univ'=>'Universitas Surabaya (UBAYA)',       'rating'=>5, 'matkul'=>'Basis Data MySQL',             'tanggal'=>'5 Jun 2026',  'text'=>'Sabar banget ngajarin dari nol. Langsung ngerti konsep JOIN dan normalisasi setelah 2 sesi!'],
+                ['name'=>'Reva',    'univ'=>'Universitas Kristen Petra',         'rating'=>4, 'matkul'=>'Algoritma Pemrograman',        'tanggal'=>'1 Jun 2026',  'text'=>'Penjelasannya jelas dan sistematis. Cuma agak cepat di bagian rekursi, tapi overall oke banget!'],
+                ['name'=>'Dita',    'univ'=>'Institut Teknologi Sepuluh Nopember','rating'=>5, 'matkul'=>'Web Development (Laravel)',   'tanggal'=>'28 Mei 2026', 'text'=>'Keren! Dari yang bingung routing Laravel sekarang udah bisa bikin CRUD sendiri. Makasih kak!'],
+                ['name'=>'Kevin',   'univ'=>'Universitas Airlangga',              'rating'=>5, 'matkul'=>'Basis Data MySQL',             'tanggal'=>'22 Mei 2026', 'text'=>'Metode pengajaran kak Budi pakai analogi sehari-hari, jadi konsep database yang abstrak terasa nyata.'],
+                ['name'=>'Monica',  'univ'=>'Universitas Surabaya (UBAYA)',       'rating'=>4, 'matkul'=>'Struktur Data',                'tanggal'=>'18 Mei 2026', 'text'=>'Ngejelasin BST dan Graph dengan contoh yang mudah dimengerti. Belajar jadi tidak stress!'],
+                ['name'=>'Hendra',  'univ'=>'Universitas Kristen Petra',         'rating'=>5, 'matkul'=>'Algoritma Pemrograman',        'tanggal'=>'14 Mei 2026', 'text'=>'Berhasil lolos UTS dengan nilai A. Terima kasih banyak kak Budi sudah sabar mengajari!'],
+            ];
+            @endphp
+
+            {{-- Summary --}}
+            <div class="flex items-center gap-4 mb-6 p-4 bg-slate-50 border border-border-ui rounded-lg">
+                <div class="text-center">
+                    <p class="text-3xl font-extrabold text-ink">4.9</p>
+                    <div class="flex justify-center gap-0.5 mt-1 text-gold">
+                        <i class="bi bi-star-fill text-sm"></i>
+                        <i class="bi bi-star-fill text-sm"></i>
+                        <i class="bi bi-star-fill text-sm"></i>
+                        <i class="bi bi-star-fill text-sm"></i>
+                        <i class="bi bi-star-half text-sm"></i>
+                    </div>
+                    <p class="text-[10px] text-muted mt-1">dari {{ count($reviews) }} ulasan</p>
+                </div>
+                <div class="w-px h-12 bg-border-ui hidden sm:block"></div>
+                <div class="flex-1 space-y-1.5 w-full">
+                    @foreach([5,4,3,2,1] as $star)
+                    @php $pct = count($reviews) > 0 ? round(collect($reviews)->where('rating',$star)->count() / count($reviews) * 100) : 0; @endphp
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="w-8 text-muted flex items-center gap-0.5">{{ $star }} <i class="bi bi-star-fill text-gold text-[9px]"></i></span>
+                        <div class="flex-1 bg-slate-200 rounded-full h-2 overflow-hidden">
+                            <div class="h-full rounded-full bg-gold transition-all" style="width: {{ $pct }}%"></div>
+                        </div>
+                        <span class="w-5 text-right text-muted text-[11px]">{{ collect($reviews)->where('rating',$star)->count() }}</span>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+            {{-- Filter buttons --}}
+            <div class="flex flex-wrap gap-2 mb-5">
+                <button class="filter-rev-btn bg-accent text-white border border-accent text-xs font-bold px-3 py-1.5 rounded-md transition" onclick="filterModalReviews('all',this)">Semua ({{ count($reviews) }})</button>
+                @foreach([5,4] as $star)
+                <button class="filter-rev-btn bg-white border border-border-ui text-muted hover:border-accent hover:text-accent text-xs font-bold px-3 py-1.5 rounded-md transition" onclick="filterModalReviews({{ $star }},this)">{{ $star }} ⭐ ({{ collect($reviews)->where('rating',$star)->count() }})</button>
+                @endforeach
+            </div>
+
+            {{-- Grid review cards --}}
+            <div class="space-y-4" id="modal-reviews-grid">
+                @foreach($reviews as $r)
+                <div class="rev-card bg-white border border-border-ui rounded-lg p-5" data-rating="{{ $r['rating'] }}">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-slate-100 border border-border-ui flex items-center justify-center font-extrabold text-accent text-sm shrink-0">
+                                {{ strtoupper(substr($r['name'], 0, 1)) }}
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-ink text-sm">{{ $r['name'] }}</h4>
+                                <p class="text-[10px] text-muted">{{ $r['univ'] }}</p>
+                            </div>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="flex gap-0.5 text-gold justify-end mb-0.5">
+                                @for($i = 1; $i <= 5; $i++)
+                                    <i class="bi {{ $i <= $r['rating'] ? 'bi-star-fill' : 'bi-star' }} text-xs"></i>
+                                @endfor
+                            </div>
+                            <p class="text-[9px] text-muted">{{ $r['tanggal'] }}</p>
+                        </div>
+                    </div>
+                    <span class="inline-block bg-slate-50 border border-border-ui text-xs font-semibold text-accent px-2.5 py-1 rounded mb-2.5">{{ $r['matkul'] }}</span>
+                    <p class="text-sm text-subtle leading-relaxed italic">"{{ $r['text'] }}"</p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
+
 @push('scripts')
+<script>
+// ── Reviews Modal ─────────────────────────────────────────────────────────
+function toggleReviewsModal() {
+    const modal = document.getElementById('reviews-modal');
+    if (!modal) return;
+    modal.classList.toggle('hidden');
+    document.body.classList.toggle('overflow-hidden');
+}
+
+function filterModalReviews(star, btn) {
+    document.querySelectorAll('.filter-rev-btn').forEach(b => {
+        b.classList.remove('bg-accent', 'text-white', 'border-accent');
+        b.classList.add('bg-white', 'text-muted', 'border-border-ui');
+    });
+    btn.classList.add('bg-accent', 'text-white', 'border-accent');
+    btn.classList.remove('bg-white', 'text-muted', 'border-border-ui');
+
+    document.querySelectorAll('.rev-card').forEach(card => {
+        const show = star === 'all' || parseInt(card.dataset.rating) === star;
+        card.style.display = show ? '' : 'none';
+    });
+}
+</script>
 <script>
 // ── Countdown ─────────────────────────────────────────────────────────────
 let totalSec = 15 * 60;
 const countdownEl = document.getElementById('countdown-text');
-const timer = setInterval(() => {
+const timer = countdownEl ? setInterval(() => {
     if (totalSec <= 0) { clearInterval(timer); countdownEl.textContent = 'SEKARANG!'; return; }
     totalSec--;
     const m = Math.floor(totalSec / 60);
@@ -207,7 +334,7 @@ const timer = setInterval(() => {
     countdownEl.textContent = m > 0
         ? `${m} menit ${s.toString().padStart(2,'0')} detik lagi`
         : `${s} detik lagi`;
-}, 1000);
+}, 1000) : null;
 
 // ── Konfirmasi selesai ────────────────────────────────────────────────────
 let incomeVal = 1450000;

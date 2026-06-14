@@ -630,10 +630,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
 
             <div class="bg-white rounded-2xl shadow-sm border border-secondary overflow-hidden hover:shadow-md transition-shadow">
-                <input type="checkbox" id="faq-5" class="peer hidden">
+                <input type="checkbox" id="faq-5" class="peer hidden" checked>
                 <label for="faq-5" class="flex justify-between items-center font-bold cursor-pointer p-6 text-dark select-none hover:bg-surface transition-colors">
                     <span>Apakah bisa ganti jadwal jika berhalangan?</span>
                     <span class="transition-transform duration-300 ease-in-out peer-checked:rotate-180 text-primary">
@@ -648,6 +648,23 @@
                     </div>
                 </div>
             </div>
+
+            <!-- <div class="bg-white rounded-2xl shadow-sm border border-secondary overflow-hidden hover:shadow-md transition-shadow">
+                <input type="checkbox" id="faq-5" class="peer hidden">
+                <label for="faq-5" class="flex justify-between items-center font-bold cursor-pointer p-6 text-dark select-none hover:bg-surface transition-colors">
+                    <span>Apakah bisa ganti jadwal jika berhalangan?</span>
+                    <span class="transition-transform duration-300 ease-in-out peer-checked:rotate-180 text-primary">
+                        <i class="bi bi-chevron-down"></i>
+                    </span>
+                </label>
+                <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out peer-checked:grid-rows-[1fr]">
+                    <div class="overflow-hidden">
+                        <div class="text-gray-600 px-6 pb-6 pt-4 text-sm leading-relaxed border-t border-secondary/50 bg-surface/30">
+                            Tentu bisa! Kamu cukup menghubungi tutor melalui kontak yang tertera setelah booking berhasil, maksimal H-1 sebelum jadwal yang ditentukan untuk melakukan reschedule.
+                        </div>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 </section>

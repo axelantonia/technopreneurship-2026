@@ -4,30 +4,9 @@
 @section('content')
 
 {{-- Page heading --}}
-<div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-    <div>
-        <h1 class="text-xl font-bold text-ink">Profil Saya</h1>
-        <p class="text-sm text-muted mt-0.5">Kelola informasi pribadi dan pengaturan akunmu.</p>
-    </div>
-    <a href="{{ route('tutor.subscription') ?? '#' }}" class="bg-gold/10 hover:bg-gold/20 border border-gold/30 text-gold px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-2">
-        <i class="bi bi-star-fill"></i> Upgrade ke Premium
-    </a>
-</div>
-
-{{-- ═══ PREMIUM BANNER ══════════════════════════════════════════════════════ --}}
-<div class="bg-gradient-to-r from-gold/10 to-gold/5 border border-gold/30 rounded-lg p-4 mb-6 flex flex-col sm:flex-row items-center gap-4">
-    <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center shrink-0 hidden sm:flex">
-        <i class="bi bi-star-fill text-gold text-lg"></i>
-    </div>
-    <div class="flex-1 text-center sm:text-left">
-        <h3 class="text-sm font-bold text-ink">Buka Potensi Maksimalmu!</h3>
-        <p class="text-xs text-muted mt-0.5">Dapatkan badge khusus, listing prioritas, dan potongan platform lebih rendah dengan Premium.</p>
-    </div>
-    <div class="shrink-0 w-full sm:w-auto mt-2 sm:mt-0">
-        <a href="{{ route('tutor.subscription') ?? '#' }}" class="block text-center bg-gold hover:bg-gold/90 text-white text-xs font-semibold px-4 py-2 rounded-md transition shadow-sm">
-            Lihat Keuntungan Premium
-        </a>
-    </div>
+<div class="mb-6">
+    <h1 class="text-xl font-bold text-ink">Profil Saya</h1>
+    <p class="text-sm text-muted mt-0.5">Kelola informasi pribadi dan pengaturan akunmu.</p>
 </div>
 
 {{-- ═══ PROFILE FORM ════════════════════════════════════════════════════════ --}}
@@ -40,7 +19,7 @@
             </button>
         </div>
         <div>
-            <h2 class="text-lg font-bold text-ink flex items-center gap-2">Budi Santoso <i class="bi bi-patch-check-fill text-slate-300" title="Akun Basic (Belum Premium)"></i></h2>
+            <h2 class="text-lg font-bold text-ink flex items-center gap-2">Budi Santoso <i class="bi bi-patch-check-fill text-gold" title="Akun Premium"></i></h2>
             <p class="text-sm text-muted">Tutor Web Development</p>
         </div>
     </div>

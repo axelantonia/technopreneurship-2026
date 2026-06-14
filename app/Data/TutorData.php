@@ -70,7 +70,7 @@ class TutorData
             ],
             [
                 'id'            => 4,
-                'name'          => 'Kevin Hartono',
+                'name'          => 'Kevin Wijaya',
                 'jurusan'       => 'Informatika',
                 'kampus'        => 'Universitas Surabaya (UBAYA)',
                 'matkul'        => ['Pemrograman Web', 'Basis Data MySQL', 'Algoritma Pemrograman', 'Cloud Computing'],

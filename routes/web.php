@@ -14,6 +14,7 @@ Route::get('/tutor/chat',      fn() => view('tutors.chat'))->name('tutor.chat');
 Route::get('/tutor/history',  fn() => view('tutors.history'))->name('tutor.history');
 Route::get('/tutor/review',  fn() => view('tutors.reviews'))->name('tutor.review');
 Route::get('/tutor/subscription',  fn() => view('tutors.subscription'))->name('tutor.subscription');
+Route::get('/tutor/profile',  fn() => view('tutors.profile'))->name('tutor.profile');
 
 
 
@@ -33,5 +34,3 @@ Route::get('/login',  fn() => view('pages.login'))->name('login');
 Route::get('/signup', fn() => view('pages.signup'))->name('signup');
 Route::get('/chat/{tutor_id?}', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat');
 Route::view('/voucher', 'pages.belivoucher')->name('belivoucher');
-
-

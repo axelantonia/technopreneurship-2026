@@ -100,7 +100,7 @@
             @yield('content')
         </main>
         <footer class="border-t border-border-ui bg-white px-8 py-3 text-xs text-muted">
-            © {{ date('Y') }} Tutorium — Panel Tutor
+            © {{ date('Y') }} Tutorium 
         </footer>
     </div>
 </div>

@@ -66,7 +66,7 @@
 
         <!-- COPYRIGHT -->
         <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/60 text-sm">
-            <p>&copy; 2026 Tutorium Surabaya. Dibuat untuk UTS dengan ❤️</p>
+            <p>&copy; 2026 Tutorium Surabaya.  UTS dengan cinta.</p>
         </div>
     </div>
 </footer>

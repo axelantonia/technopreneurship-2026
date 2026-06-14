@@ -25,7 +25,7 @@
 
     <div class="bg-white border border-border-ui rounded-lg p-5">
         <p class="text-[11px] font-semibold text-muted uppercase tracking-widest mb-2">Total Pendapatan Bulan Ini</p>
-        <p class="text-2xl font-extrabold text-ink">Rp 1.250.000</p>
+        <p class="text-2xl font-extrabold text-ink">Rp 1.450.000</p>
         <p class="text-xs text-emerald font-semibold mt-2 flex items-center gap-1">
             <i class="bi bi-arrow-up-right-circle-fill"></i> +12% dari bulan lalu
         </p>

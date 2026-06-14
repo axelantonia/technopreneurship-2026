@@ -50,6 +50,8 @@
 
     @include('components.footer')
 
+    @stack('scripts')
+
     <!-- Modal Kebijakan Privasi -->
     <div id="modal-kebijakan" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
         <!-- Backdrop -->

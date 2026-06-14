@@ -17,7 +17,8 @@ class TutorData
                 'rating'        => 4.8,
                 'reviews'       => 24,
                 'price'         => 65000,
-                'color'         => '3b82f6',
+                'profil'         => 'budi',
+                'rank'          => 1,
                 'modes'         => ['Online', 'Offline'],
                 'availableDays' => ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'],
                 'jadwal'        => [
@@ -31,14 +32,14 @@ class TutorData
             ],
             [
                 'id'            => 2,
-                'name'          => 'Amanda Kurnia',
+                'name'          => 'Amanda Kurniawan',
                 'jurusan'       => 'Sistem Informasi',
                 'kampus'        => 'Universitas Kristen Petra',
                 'matkul'        => ['Basis Data MySQL', 'Pemrograman Web', 'Sistem Informasi Manajemen', 'Jaringan Komputer'],
                 'rating'        => 4.7,
                 'reviews'       => 18,
                 'price'         => 60000,
-                'color'         => '10b981',
+                'profil'         => 'amanda',
                 'modes'         => ['Online'],
                 'availableDays' => ['Senin', 'Rabu', 'Jumat'],
                 'jadwal'        => [
@@ -57,7 +58,7 @@ class TutorData
                 'rating'        => 4.9,
                 'reviews'       => 31,
                 'price'         => 70000,
-                'color'         => 'f59e0b',
+                'profil'         => 'samuel',
                 'modes'         => ['Online', 'Offline'],
                 'availableDays' => ['Selasa', 'Kamis', 'Sabtu'],
                 'jadwal'        => [
@@ -76,7 +77,7 @@ class TutorData
                 'rating'        => 4.6,
                 'reviews'       => 12,
                 'price'         => 55000,
-                'color'         => '8b5cf6',
+                'profil'         => 'kevin',
                 'modes'         => ['Online'],
                 'availableDays' => ['Senin', 'Selasa', 'Rabu'],
                 'jadwal'        => [
@@ -90,14 +91,14 @@ class TutorData
             // ── AKUNTANSI / MANAJEMEN ──────────────────────────────────────
             [
                 'id'            => 5,
-                'name'          => 'Cindy Lestari',
+                'name'          => 'Siska Amanda',
                 'jurusan'       => 'Akuntansi',
                 'kampus'        => 'Universitas Kristen Petra',
                 'matkul'        => ['Akuntansi Pengantar', 'Akuntansi Keuangan Menengah', 'Auditing', 'Perpajakan'],
                 'rating'        => 4.8,
                 'reviews'       => 27,
                 'price'         => 60000,
-                'color'         => 'ec4899',
+                'profil'         => 'siska',
                 'modes'         => ['Online', 'Offline'],
                 'availableDays' => ['Senin', 'Rabu', 'Kamis'],
                 'jadwal'        => [
@@ -109,14 +110,14 @@ class TutorData
             ],
             [
                 'id'            => 6,
-                'name'          => 'Reza Firmansyah',
+                'name'          => 'Dimas Pratama',
                 'jurusan'       => 'Manajemen',
                 'kampus'        => 'Universitas Surabaya (UBAYA)',
                 'matkul'        => ['Manajemen Keuangan', 'Statistika Bisnis', 'Manajemen Pemasaran', 'Analisis Investasi'],
                 'rating'        => 4.7,
                 'reviews'       => 19,
                 'price'         => 55000,
-                'color'         => 'f97316',
+                'profil'         => 'dimas',
                 'modes'         => ['Online', 'Offline'],
                 'availableDays' => ['Selasa', 'Kamis', 'Jumat'],
                 'jadwal'        => [
@@ -135,7 +136,7 @@ class TutorData
                 'rating'        => 4.5,
                 'reviews'       => 15,
                 'price'         => 50000,
-                'color'         => '14b8a6',
+                'profil'         => 'felicia',
                 'modes'         => ['Online'],
                 'availableDays' => ['Senin', 'Rabu', 'Sabtu'],
                 'jadwal'        => [
@@ -156,7 +157,7 @@ class TutorData
                 'rating'        => 4.9,
                 'reviews'       => 22,
                 'price'         => 70000,
-                'color'         => '64748b',
+                'profil'         => 'denny',
                 'modes'         => ['Online', 'Offline'],
                 'availableDays' => ['Selasa', 'Kamis', 'Sabtu'],
                 'jadwal'        => [
@@ -175,7 +176,7 @@ class TutorData
                 'rating'        => 4.7,
                 'reviews'       => 16,
                 'price'         => 65000,
-                'color'         => 'a855f7',
+                'profil'         => 'natasha',
                 'modes'         => ['Online', 'Offline'],
                 'availableDays' => ['Senin', 'Rabu', 'Jumat'],
                 'jadwal'        => [
@@ -196,7 +197,7 @@ class TutorData
                 'rating'        => 4.6,
                 'reviews'       => 20,
                 'price'         => 50000,
-                'color'         => 'ef4444',
+                'profil'         => 'jessica',
                 'modes'         => ['Online'],
                 'availableDays' => ['Senin', 'Selasa', 'Kamis'],
                 'jadwal'        => [
@@ -215,7 +216,7 @@ class TutorData
                 'rating'        => 4.8,
                 'reviews'       => 29,
                 'price'         => 65000,
-                'color'         => '06b6d4',
+                'profil'         => 'adrian',
                 'modes'         => ['Online', 'Offline'],
                 'availableDays' => ['Senin', 'Rabu', 'Sabtu'],
                 'jadwal'        => [
@@ -234,7 +235,7 @@ class TutorData
                 'rating'        => 4.5,
                 'reviews'       => 11,
                 'price'         => 50000,
-                'color'         => 'f472b6',
+                'profil'         => 'meliana',
                 'modes'         => ['Online'],
                 'availableDays' => ['Selasa', 'Kamis', 'Jumat'],
                 'jadwal'        => [

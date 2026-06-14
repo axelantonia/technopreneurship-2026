@@ -1,14 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+    $tutorAvatarSrc = $tutor['profil']
+        ? asset('assets/img/profil-' . $tutor['profil'] . '.jpg')
+        : asset('assets/img/profil-default.jpg');
+    $tutorAvatarAlt = $tutor['name'] ?? 'Tutor';
+@endphp
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
     {{-- ── HEADER ── --}}
     <div class="bg-white border border-secondary rounded-3xl shadow-sm p-4 px-5 flex items-center justify-between mb-4">
         <div class="flex items-center gap-4">
             <div class="relative">
-                <img src="https://ui-avatars.com/api/?name={{ urlencode($tutor['name']) }}&background={{ $tutor['color'] }}&color=fff&size=96"
-                     class="w-12 h-12 rounded-full shadow-sm" alt="{{ $tutor['name'] }}">
+                <img src="{{ $tutorAvatarSrc }}"
+                     alt="{{ $tutorAvatarAlt }}"
+                     class="w-12 h-12 object-cover rounded-full shadow-sm">
                 <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></span>
             </div>
             <div>
@@ -22,12 +29,12 @@
 
         <div class="flex items-center gap-3">
             <button id="btn-clear" title="Hapus riwayat chat"
-                    class="text-sm text-gray-400 hover:text-red-500 transition flex items-center gap-1">
+                    class="text-sm text-gray-400 hover:text-red-500 transition cursor-pointer flex items-center gap-1">
                 <i class="bi bi-trash3"></i>
                 <span class="hidden sm:inline text-xs font-medium">Hapus Chat</span>
             </button>
-            <a href="{{ route('tutors') }}" class="text-sm font-bold text-gray-400 hover:text-primary transition">
-                ← Kembali
+            <a href="{{ route('tutors') }}" class="text-sm font-bold text-gray-400 hover:text-primary transition cursor-pointer">
+                Kembali →
             </a>
         </div>
     </div>
@@ -46,8 +53,9 @@
 
             {{-- Pesan sambutan tutor --}}
             <div class="flex items-end gap-3">
-                <img src="https://ui-avatars.com/api/?name={{ urlencode($tutor['name']) }}&background={{ $tutor['color'] }}&color=fff&size=72"
-                     class="w-8 h-8 rounded-full shadow-sm flex-shrink-0" alt="">
+                <img src="{{ $tutorAvatarSrc }}"
+                     alt="{{ $tutorAvatarAlt }}"
+                     class="w-12 h-12 object-cover rounded-full shadow-sm">
                 <div class="bg-white border border-secondary px-4 py-3 rounded-2xl rounded-bl-md shadow-sm max-w-sm">
                     <p class="text-sm text-gray-700 leading-relaxed">
                         Halo! 👋 Saya <strong>{{ $tutor['name'] }}</strong>, tutor kamu hari ini.<br>
@@ -66,7 +74,7 @@
                 <i id="file-preview-icon" class="bi bi-file-earmark text-primary"></i>
                 <span id="file-preview-name" class="truncate max-w-[200px] text-xs"></span>
             </div>
-            <button id="btn-remove-file" type="button" class="text-gray-400 hover:text-red-500 transition">
+            <button id="btn-remove-file" type="button" class="text-gray-400 hover:text-red-500 transition cursor-pointer">
                 <i class="bi bi-x-circle-fill"></i>
             </button>
         </div>
@@ -78,8 +86,8 @@
                 <input type="file" id="file-input" class="hidden" accept="image/*,.pdf,.doc,.docx">
 
                 <button type="button" id="btn-attach"
-                        class="w-11 h-11 rounded-xl bg-surface border border-secondary hover:bg-blue-50 hover:border-primary transition flex items-center justify-center flex-shrink-0"
-                        title="Kirim gambar / file">
+                        class="w-11 h-11 rounded-xl bg-surface border border-secondary hover:bg-blue-50 hover:border-primary transition flex items-center justify-center flex-shrink-0 cursor-pointer"
+                        title="Lampirkan file">
                     <i class="bi bi-paperclip text-gray-500 text-lg"></i>
                 </button>
 
@@ -91,7 +99,7 @@
                 </div>
 
                 <button type="button" id="btn-send"
-                        class="w-11 h-11 bg-primary hover:bg-primary-hover text-white rounded-xl flex items-center justify-center shadow-lg active:scale-95 transition flex-shrink-0">
+                        class="w-11 h-11 bg-primary hover:bg-primary-hover text-white rounded-xl flex items-center justify-center shadow-lg active:scale-95 transition flex-shrink-0 cursor-pointer">
                     <i class="bi bi-send-fill"></i>
                 </button>
             </div>
@@ -104,9 +112,8 @@
 </div>
 
 <script>
-    const TUTOR_NAME  = "{{ $tutor['name'] }}";
-    const TUTOR_COLOR = "{{ $tutor['color'] }}";
-    const AVATAR_URL  = `https://ui-avatars.com/api/?name=${encodeURIComponent(TUTOR_NAME)}&background=${TUTOR_COLOR}&color=fff&size=72`;
+    const TUTOR_NAME      = "{{ $tutor['name'] }}";
+    const TUTOR_AVATAR_SRC = "{{ $tutorAvatarSrc }}";
 
     const chatArea   = document.getElementById('chat-area');
     const msgInput   = document.getElementById('msg-input');
@@ -170,12 +177,10 @@
 
         if (file) {
             if (file.type.startsWith('image/')) {
-                // Gambar → tampilkan preview langsung
                 const objectUrl = URL.createObjectURL(file);
                 mediaHtml = `<img src="${objectUrl}" alt="${escapeHtml(file.name)}"
                                   class="max-w-[220px] w-full rounded-xl mb-2 block shadow-sm">`;
             } else {
-                // File non-gambar → badge nama file
                 const icon = file.type === 'application/pdf'
                     ? 'bi-file-earmark-pdf text-red-300'
                     : 'bi-file-earmark-text text-blue-200';
@@ -233,7 +238,7 @@
                 </span>
             </div>
             <div class="flex items-end gap-3">
-                <img src="${AVATAR_URL}" class="w-8 h-8 rounded-full shadow-sm flex-shrink-0">
+                <img src="${TUTOR_AVATAR_SRC}" alt="${TUTOR_NAME}" class="w-8 h-8 object-cover rounded-full shadow-sm flex-shrink-0">
                 <div class="bg-white border border-secondary px-4 py-3 rounded-2xl rounded-bl-md shadow-sm max-w-sm">
                     <p class="text-sm text-gray-700 leading-relaxed">
                         Chat sudah direset. Ada yang mau ditanyakan? 😊

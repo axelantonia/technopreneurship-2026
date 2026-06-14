@@ -147,8 +147,8 @@
             container.innerHTML += `
                 <div class="bg-white p-6 rounded-3xl border border-secondary flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 group">
                     <div class="md:w-1/4 flex flex-col items-center">
-                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=${t.color}&color=fff&size=150"
-                             class="w-24 h-24 rounded-full mb-3 ring-4 ring-surface group-hover:ring-blue-100 transition-all">
+                        <img src="{{ asset('assets/img/profil-${t.profil}.jpg') }}" alt="Foto Profil"
+                             class="w-24 h-24 object-cover rounded-full mb-3 ring-4 ring-surface group-hover:ring-blue-100 transition-all">
                         <div class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-lg text-xs font-bold border border-yellow-100 flex items-center gap-1">
                             <i class="bi bi-star-fill"></i> ${t.rating}
                         </div>

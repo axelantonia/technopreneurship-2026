@@ -5,7 +5,7 @@
             <!-- LOGO + DESC -->
             <div class="md:col-span-5">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 mb-4">
-                    <img src="assets/logo/tutorial-logo-white.png" alt="Tutorium" class="h-10 w-auto">
+                    <img src="{{ asset('assets/logo/tutorium-logo-white.png') }}" alt="Tutorium" class="h-10 w-auto">
                 </a>
 
                 <p class="text-white/80 text-sm leading-relaxed mb-6 max-w-sm">

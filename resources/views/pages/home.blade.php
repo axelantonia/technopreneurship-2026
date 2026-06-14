@@ -228,7 +228,7 @@
 
             <div class="bg-white rounded-3xl border border-secondary shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col group">
                 <div class="relative mb-4 overflow-hidden rounded-2xl">
-                    <img src="{{ asset('assets/img/profil-budi.jpeg') }}" alt="Budi" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="{{ asset('assets/img/profil-budi.jpg') }}" alt="Budi" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-xl text-xs font-extrabold text-yellow-500 shadow-sm flex items-center gap-1.5 border border-white">
                         <i class="bi bi-star-fill"></i> 4.9
                     </div>
@@ -739,9 +739,7 @@
             behavior: 'smooth'
         });
     }
-</script>
 
-<script>
     /* ── Mini Toast untuk Pricing Plans ─────────────────────────── */
     function sToast(message, type = 'info') {
         const colors = {
@@ -779,8 +777,6 @@
             setTimeout(() => toast.remove(), 400);
         }, 3500);
     }
-</script>
-
 
     tailwind.config = {
             theme: {

@@ -34,3 +34,10 @@ Route::get('/login',  fn() => view('pages.login'))->name('login');
 Route::get('/signup', fn() => view('pages.signup'))->name('signup');
 Route::get('/chat/{tutor_id?}', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat');
 Route::view('/voucher', 'pages.belivoucher')->name('belivoucher');
+
+// ── Admin Panel ───────────────────────────────────────────────────────────
+Route::get('/admin',              fn() => redirect()->route('admin.dashboard'));
+Route::get('/admin/dashboard',    fn() => view('admin.dashboard'))->name('admin.dashboard');
+Route::get('/admin/revenue',      fn() => view('admin.revenue'))->name('admin.revenue');
+Route::get('/admin/kyc',         fn() => view('admin.verification'))->name('admin.kyc');
+Route::get('/admin/voucher',     fn() => view('admin.voucher'))->name('admin.voucher');
